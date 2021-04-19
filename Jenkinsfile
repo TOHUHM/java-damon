@@ -1,5 +1,5 @@
     echo "Read values.yaml"
-    def helm_value_data = readYaml file: 'values.yaml'
+    def helm_value_data = readYaml file: './values.yaml'
 
 
 
