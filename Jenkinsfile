@@ -1,9 +1,9 @@
-    log.info "Read values.yaml"
+    echo "Read values.yaml"
     def helm_value_data = readYaml file: 'values.yaml'
 
 
 
-    log.info "Update data values"
+    echo  "Update data values"
 
     try {
 
