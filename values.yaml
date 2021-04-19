@@ -1,0 +1,41 @@
+# Default values for jenkins.
+# This is a YAML-formatted file.
+# Declare name/value pairs to be passed into your templates.
+# name: value
+
+## Overrides for generated resource names
+# See templates/_helpers.tpl
+# nameOverride:
+# fullnameOverride:
+# namespaceOverride:
+
+# For FQDN resolving of the controller service. Change this value to match your existing configuration.
+# ref: https://github.com/kubernetes/dns/blob/master/docs/specification.md
+clusterZone: "cluster.local"
+
+renderHelmLabels: true
+
+controller:
+  # Used for label app.kubernetes.io/component
+  componentName: "jenkins-controller"
+  image: "jenkins/jenkins"
+  tag: "2.277.1-jdk11"
+  imagePullPolicy: "Always"
+  imagePullSecretName:
+  # Optionally configure lifetime for controller-container
+  lifecycle:
+  #  postStart:
+  #    exec:
+  #      command:
+  #      - "uname"
+  #      - "-a"
+  disableRememberMe: false
+  numExecutors: 0
+  # configures the executor mode of the Jenkins node. Possible values are: NORMAL or EXCLUSIVE
+  executorMode: "NORMAL"
+  # This is ignored if enableRawHtmlMarkupFormatter is true
+  markupFormatter: plainText
+  customJenkinsLabels: []
+  # The default configuration uses this secret to configure an admin user
+  # If you don't need that user or use a different security realm then you can disable it
+  adminSecret: true
